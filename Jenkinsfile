@@ -4,7 +4,7 @@ pipeline {
   
   stages {
 
-    parallel {
+    parallel(
     stage("build") {
       steps {
         echo 'Building the application'
@@ -23,6 +23,6 @@ stage("deploy") {
         echo 'Deploying the application'
       } 
     }
-    }
+    )
   }
 }
