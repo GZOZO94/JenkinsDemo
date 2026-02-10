@@ -2,11 +2,16 @@ pipeline {
   
   agent any
 
-  parameters {
-        string(name: 'ENV', defaultValue: 'dev', description: 'Target environment')
-        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
-        choice(name: 'REGION', choices: ['us-east-1', 'eu-west-1'], description: 'AWS region')
-    }
+  properties([
+  parameters([
+    [$class: 'SeparatorParameterDefinition', name: '=== DEPLOY OPTIONS ==='],
+    string(name: 'ENV', defaultValue: 'dev'),
+    booleanParam(name: 'CONFIRM_DEPLOY', defaultValue: false),
+
+    [$class: 'SeparatorParameterDefinition', name: '=== TEST OPTIONS ==='],
+    booleanParam(name: 'RUN_TESTS', defaultValue: true)
+  ])
+])
   
   stages {
     stage("build") {
