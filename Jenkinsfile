@@ -29,6 +29,5 @@ stage("deploy") {
         echo 'Deploying the application'
       } 
     }
-    )
   }
 }
