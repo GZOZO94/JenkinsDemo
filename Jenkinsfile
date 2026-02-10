@@ -2,7 +2,7 @@ pipeline {
   
   agent any
 
-  properties([
+  options([
   parameters([
     [$class: 'SeparatorParameterDefinition', name: '=== DEPLOY OPTIONS ==='],
     string(name: 'ENV', defaultValue: 'dev'),
