@@ -1,6 +1,12 @@
 pipeline {
   
   agent any
+
+  parameters {
+        string(name: 'ENV', defaultValue: 'dev', description: 'Target environment')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
+        choice(name: 'REGION', choices: ['us-east-1', 'eu-west-1'], description: 'AWS region')
+    }
   
   stages {
 
